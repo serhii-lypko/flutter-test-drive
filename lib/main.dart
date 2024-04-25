@@ -480,6 +480,8 @@ class BottomNavigationPage extends StatefulWidget {
 }
 
 class _BottomNavigationPageState extends State<BottomNavigationPage> {
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -497,33 +499,48 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
           children: [
             GestureDetector(
               onTap: () {
+                setState(() {
+                  _currentIndex = 0;
+                });
                 widget.child.goBranch(
                   0,
                   initialLocation: 0 == widget.child.currentIndex,
                 );
-                setState(() {});
               },
-              child: const Icon(Icons.home),
+              child: Icon(
+                Icons.home,
+                color: _currentIndex == 0 ? Colors.blue : Colors.grey,
+              ),
             ),
             GestureDetector(
               onTap: () {
+                setState(() {
+                  _currentIndex = 1;
+                });
                 widget.child.goBranch(
                   1,
                   initialLocation: 1 == widget.child.currentIndex,
                 );
-                setState(() {});
               },
-              child: const Icon(Icons.search),
+              child: Icon(
+                Icons.search,
+                color: _currentIndex == 1 ? Colors.blue : Colors.grey,
+              ),
             ),
             GestureDetector(
               onTap: () {
+                setState(() {
+                  _currentIndex = 2;
+                });
                 widget.child.goBranch(
                   2,
                   initialLocation: 2 == widget.child.currentIndex,
                 );
-                setState(() {});
               },
-              child: const Icon(Icons.settings),
+              child: Icon(
+                Icons.settings,
+                color: _currentIndex == 2 ? Colors.blue : Colors.grey,
+              ),
             ),
           ],
         ),
